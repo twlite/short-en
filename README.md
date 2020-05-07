@@ -13,6 +13,7 @@ Simple url shortener using mongodb.
 - Dashboard
 - Better backend
 - Admin Panel
+- Custom URL
 
 # Created by
 **Snowflake107**
