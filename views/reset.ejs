@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <script>
+      let password = prompt("Enter the password:");
+      if (password) location.href=`/reset/confirm?password=${password}`;
+      if (!password) location.href="/401";
+    </script>
+  </body>
+</html>
