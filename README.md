@@ -1,22 +1,19 @@
 # short-en
+
 Simple url shortener using mongodb.
 
 # Setup
+
 - Download
-- Run `npm install`
+- Run `yarn install --immutable`
 - Add mongodb url in config
-- Run `npm start`
+- Run `yarn start`
 
 # todo
+
 - Login system
 - Better ui
 - Dashboard
 - Better backend
 - Admin Panel
 - Custom URL
-
-# Created by
-**Snowflake107**
-
-# Preview
-**[https://short-en.glitch.me](https://short-en.glitch.me)**

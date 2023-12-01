@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <!-- require cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="shortcut icon" href="https://cdn.glitch.com/22f1303d-5353-447c-86f6-84dbd084a3d1%2Ficon.png?v=1582726341543" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://cdn.glitch.com/22f1303d-5353-447c-86f6-84dbd084a3d1%2Ficon.png?v=1582726341543"
+        type="image/x-icon">
 
     <!-- CSS -->
     <style>
@@ -39,62 +44,77 @@
     <nav class="navbar fixed-top navbar-expand-lg">
         <a class="navbar-brand" href="/">Short-en</a>
     </nav>
-<br /><br /><br /><br />
+    <br /><br /><br /><br />
 
-<div class="container">
-    <div class="jumbotron bg-dark text-white">
-        <center>
-            <img src="https://cdn.glitch.com/22f1303d-5353-447c-86f6-84dbd084a3d1%2Ficon.png?v=1582726341543" alt="icon" class="img-fluid" height="200" width="200" draggable="false">
-            <h1>Short-en | Simple URL Shortener</h1>
+    <div class="container">
+        <div class="jumbotron bg-dark text-white">
+            <center>
+                <img src="https://cdn.glitch.com/22f1303d-5353-447c-86f6-84dbd084a3d1%2Ficon.png?v=1582726341543"
+                    alt="icon" class="img-fluid" height="200" width="200" draggable="false">
+                <h1>Short-en | Simple URL Shortener</h1>
+                <br />
+            </center>
+            <form action="/" method="post" class="form my-4">
+                <label for="url" class="sr-only">Enter Your URL Here <i style="color:#FF0000 !important;"
+                        title="Required">*</i></label>
+                <input type="url" name="url" id="url" placeholder="Enter Your URL Here" class="form-control mr-2 col"
+                    required>
+                <div class="custom-control custom-switch my-3">
+                    <input type="checkbox" class="custom-control-input" name="nsfw" value="true" id="temp">
+                    <label class="custom-control-label" for="temp">Mark as NSFW</label>
+                </div>
+                <button class="btn btn-success btn-lg col" type="submit">Shorten</button>
+            </form>
+        </div>
+        <br><br>
+        <div class="jumbotron bg-dark text-white">
+            <h1 class="text-center">All URLs</h1>
             <br />
-        </center>
-        <form action="/" method="post" class="form my-4">
-            <label for="url" class="sr-only">Enter Your URL Here <i style="color:#FF0000 !important;" title="Required">*</i></label>
-            <input type="url" name="url" id="url" placeholder="Enter Your URL Here" class="form-control mr-2 col" required>
-            <div class="custom-control custom-switch my-3">
-                <input type="checkbox" class="custom-control-input" name="nsfw" value="true" id="temp">
-                <label class="custom-control-label" for="temp">Mark as NSFW</label>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.N.</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Shortened</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Total Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (!urls || urls.length < 1) { %>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><b>No Data</b></td>
+                                <td><a>No Data</a></td>
+                                <td>
+                                    <h3>No Data</h3>
+                                </td>
+                                <td>No Data</td>
+                            </tr>
+                            <% } else urls.forEach(url=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= urls.indexOf(url) + 1 %>
+                                    </th>
+                                    <td><b>
+                                            <%= url.mainURL %>
+                                        </b></td>
+                                    <td><a href="/<%= url.shortURL %>">/<%= url.shortURL %></a></td>
+                                    <td>
+                                        <h3><span class="badge badge-<%= url.nsfw ? " danger" : "primary" %>"><%=
+                                                    url.nsfw ? "NSFW" : "SFW" %></span></h3>
+                                    </td>
+                                    <td>
+                                        <%= url.clicks %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                    </tbody>
+                </table>
             </div>
-            <button class="btn btn-success btn-lg col" type="submit">Shorten</button>
-        </form>
-    </div>
-    <br><br>
-    <div class="jumbotron bg-dark text-white">
-        <h1 class="text-center">All URLs</h1>
-        <br />
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">S.N.</th>
-                        <th scope="col">URL</th>
-                        <th scope="col">Shortened</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Total Clicks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (!urls || urls.length < 1) { %>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><b>No Data</b></td>
-                        <td><a>No Data</a></td>
-                        <td><h3>No Data</h3></td>
-                        <td>No Data</td>
-                    </tr>
-                    <% } else urls.forEach(url => { %>
-                    <tr>
-                        <th scope="row"><%= urls.indexOf(url) + 1 %></th>
-                        <td><b><%= url.mainURL %></b></td>
-                        <td><a href="/<%= url.shortURL %>">/<%= url.shortURL %></a></td>
-                        <td><h3><span class="badge badge-<%= url.nsfw ? "danger" : "primary" %>"><%= url.nsfw ? "NSFW" : "SFW" %></span></h3></td>
-                        <td><%= url.clicks %></td>
-                    </tr>
-                    <% }) %>
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
 </body>
+
 </html>

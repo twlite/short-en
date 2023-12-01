@@ -1,4 +1,4 @@
 {
     "port": 3000,
-    "databaseURL": "mongodb_url"
+    "databaseURL": "mongodb://localhost/short-en"
 }

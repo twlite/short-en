@@ -1,7 +1,7 @@
 {
   "name": "short-en",
   "version": "1.0.0",
-  "description": "Simple URL shortner created using express and  mongodb.",
+  "description": "Simple URL shortener created using express and mongodb.",
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
@@ -9,21 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Snowflake107/short-en.git"
+    "url": "git+https://github.com/twlite/short-en.git"
   },
   "keywords": [
-    "url-shortner",
-    "simple-url-shortner"
+    "url-shortener",
+    "simple-url-shortener"
   ],
-  "author": "Snowflake7",
+  "author": "twlite",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Snowflake107/short-en/issues"
+    "url": "https://github.com/twlite/short-en/issues"
   },
-  "homepage": "https://github.com/Snowflake107/short-en#readme",
+  "homepage": "https://github.com/twlite/short-en#readme",
   "dependencies": {
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.2"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

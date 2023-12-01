@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 function createShortURL() {
-    var chars = "QWERTYUIOPASDFGHJKLZXCVBNM-abcdefghijklmnopqrstuvwxyz_1234567890";
+    var chars = "QWERTYUIOPASDFGHJKLZXCVBNMabcdefghijklmnopqrstuvwxyz1234567890";
     let finalChar = '';
     for (var i = 0; i < 5; i++) {
         finalChar += chars.charAt(Math.floor(Math.random() * chars.length))
@@ -19,16 +19,6 @@ const URLSchema = new mongoose.Schema({
         required: true,
         default: createShortURL
     },
-    createdAt: {
-        type: String,
-        required: true,
-        default: new Date()
-    },
-    createdTimestamp: {
-        type: Number,
-        default: Date.now,
-        required: true
-    },
     clicks: {
         type: Number,
         default: 0,
@@ -39,6 +29,8 @@ const URLSchema = new mongoose.Schema({
         default: false,
         required: true
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("URL", URLSchema);
