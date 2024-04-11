@@ -23,7 +23,7 @@
   "homepage": "https://github.com/twlite/short-en#readme",
   "dependencies": {
     "ejs": "^3.0.1",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "mongoose": "^5.9.2"
   },
   "packageManager": "yarn@4.0.2"
