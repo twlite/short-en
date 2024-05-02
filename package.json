@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/twlite/short-en#readme",
   "dependencies": {
-    "ejs": "^3.0.1",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "mongoose": "^5.9.2"
   },
